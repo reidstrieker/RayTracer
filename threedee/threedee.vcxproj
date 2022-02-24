@@ -155,8 +155,10 @@
     <ClInclude Include="camera.hpp" />
     <ClInclude Include="cApp.h" />
     <ClInclude Include="image.hpp" />
+    <ClInclude Include="lightbase.hpp" />
     <ClInclude Include="objectbase.hpp" />
     <ClInclude Include="objsphere.hpp" />
+    <ClInclude Include="pointlight.hpp" />
     <ClInclude Include="ray.hpp" />
     <ClInclude Include="scene.hpp" />
     <ClInclude Include="vector.hpp" />
@@ -165,9 +167,11 @@
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="cApp.cpp" />
     <ClCompile Include="image.cpp" />
+    <ClCompile Include="lightbase.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="objectbase.cpp" />
     <ClCompile Include="objsphere.cpp" />
+    <ClCompile Include="pointlight.cpp" />
     <ClCompile Include="ray.cpp" />
     <ClCompile Include="scene.cpp" />
   </ItemGroup>

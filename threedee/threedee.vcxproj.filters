@@ -39,6 +39,12 @@
     <ClInclude Include="objsphere.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="lightbase.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pointlight.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cApp.cpp">
@@ -63,6 +69,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="objsphere.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lightbase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pointlight.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

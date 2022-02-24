@@ -19,7 +19,7 @@ bool RT::objsphere::testIntersections(const RT::ray& castRay, vector<double>& in
 	vhat.normalize();
 	// note that a is equal to the squared magnitude of the direction of the cast ray
 	// as this will be a unit vector, we can conclude that the value of a will always be 1
-	// a = 1.0;
+	// a already equals 1.0
 	// calculate b
 	double b = 2.0 * vector<double>::dot(castRay.m_point1, vhat);
 	// calculate c
@@ -36,6 +36,9 @@ bool RT::objsphere::testIntersections(const RT::ray& castRay, vector<double>& in
 			// determine which point of intersection was closest to the camera
 			if (t1 < t2) intPoint = castRay.m_point1 + (vhat * t1);
 			else intPoint = castRay.m_point1 + (vhat * t2);
+			// compute the local normal (easy for a sphere at the origin!)
+			localNormal = intPoint;
+			localNormal.normalize();
 		}
 		return true;
 	}

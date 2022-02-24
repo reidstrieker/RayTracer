@@ -9,6 +9,12 @@ RT::scene::scene() {
 	m_camera.setHorzSize(0.25);
 	m_camera.setAspect(16.0 / 9.0);
 	m_camera.updateCameraGeometry();
+	// construct a test sphere (creates new instance of sphere class, constructs a shared pointer to that, pushes it back into object list)
+	m_objectList.push_back(std::make_shared<RT::objsphere>(RT::objsphere()));
+	// construct a test light
+	m_lightList.push_back(std::make_shared<RT::pointlight>(RT::pointlight()));
+	m_lightList.at(0) -> m_location = vector<double>{ std::vector<double> {5.0, -10.0, 5.0} };
+	m_lightList.at(0) -> m_color = vector<double>{ std::vector<double>{255.0, 255.0, 255.0} };
 }
 
 // function to perform the rendering
@@ -32,17 +38,28 @@ bool RT::scene::render(image &outputImage) {
 			double normY = (static_cast<double>(y) * yFact) - 1.0;
 			// generate the ray for this pixel
 			m_camera.generateRay(normX, normY, cameraRay);
-			// test if we have a valid intersection
-			bool validInt = m_testSphere.testIntersections(cameraRay, intPoint, localNormal, localColor);
-			// if we have a valid intersection, change pixel color to red
-			if (validInt) {
-				// compute the distance between the camera and the point of intersection
-				double dist = (intPoint - cameraRay.m_point1).norm();
-				if (dist > maxDist) maxDist = dist;
-				if (dist < minDist) minDist = dist;
-				outputImage.setPixel(x, y, 255.0 - ((dist - 9.0) / 0.94605) * 255.0, 0.0, 0.0);
+			// test for intersections with all objects in the scene
+			for (auto currentObject : m_objectList) {
+				bool validInt = currentObject -> testIntersections(cameraRay, intPoint, localNormal, localColor);
+				// if we have a valid intersection, change pixel color to red
+				if (validInt) {
+					// compute intensity of illumination
+					double intensity;
+					vector<double> color{ 3 };
+					bool validIllum = false;
+					for (auto currentLight : m_lightList) {
+						validIllum = currentLight->computeIllumination(intPoint, localNormal, m_objectList, currentObject, color, intensity);
+					}
+					// compute the distance between the camera and the point of intersection
+					double dist = (intPoint - cameraRay.m_point1).norm();
+					if (dist > maxDist) maxDist = dist;
+					if (dist < minDist) minDist = dist;
+					// outputImage.setPixel(x, y, 255.0 - ((dist - 9.0) / 0.94605) * 255.0, 0.0, 0.0);
+					if (validIllum) outputImage.setPixel(x, y, 255.0 * intensity, 0.0, 0.0);
+					else outputImage.setPixel(x, y, 0.0, 0.0, 0.0);
+				}
+				else outputImage.setPixel(x, y, 0.0, 0.0, 0.0);
 			}
-			else outputImage.setPixel(x, y, 0.0, 0.0, 0.0);
 		}
 	}
 	std::cout << "Minimum distance: " << minDist << std::endl;
