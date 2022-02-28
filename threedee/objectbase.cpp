@@ -17,6 +17,10 @@ bool RT::objectbase::testIntersections(const ray& castRay, vector<double>& intPo
 	return false;
 }
 
+void RT::objectbase::setTransformMatrix(const RT::GTform& transformMatrix) {
+	m_transformMatrix = transformMatrix;
+}
+
 // function to test whether two floating point numbers are close to being equal
 bool RT::objectbase::closeEnough(const double f1, const double f2) {
 	return fabs(f1 - f2) < EPSILON;

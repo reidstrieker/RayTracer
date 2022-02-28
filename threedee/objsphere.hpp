@@ -1,6 +1,7 @@
 #ifndef OBJSPHERE_H
 #define OBJSPHERE_H
 #include "objectbase.hpp"
+#include "gtfm.hpp"
 
 namespace RT {
 	class objsphere : public objectbase { // inherits from objectbase

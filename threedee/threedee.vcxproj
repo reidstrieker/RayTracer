@@ -124,6 +124,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\Reid\dev\SDL2-2.0.20\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -154,8 +155,10 @@
   <ItemGroup>
     <ClInclude Include="camera.hpp" />
     <ClInclude Include="cApp.h" />
+    <ClInclude Include="gtfm.hpp" />
     <ClInclude Include="image.hpp" />
     <ClInclude Include="lightbase.hpp" />
+    <ClInclude Include="matrix.hpp" />
     <ClInclude Include="objectbase.hpp" />
     <ClInclude Include="objsphere.hpp" />
     <ClInclude Include="pointlight.hpp" />
@@ -166,6 +169,7 @@
   <ItemGroup>
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="cApp.cpp" />
+    <ClCompile Include="gtfm.cpp" />
     <ClCompile Include="image.cpp" />
     <ClCompile Include="lightbase.cpp" />
     <ClCompile Include="main.cpp" />
