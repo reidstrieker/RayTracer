@@ -45,7 +45,7 @@ bool RT::objsphere::testIntersections(const RT::ray& castRay, vector<double>& in
 			// compute the local normal (easy for a sphere at the origin!)
 			vector<double> objOrigin = vector<double>{ std::vector<double>{0.0, 0.0, 0.0} };
 			vector<double> newObjOrigin = m_transformMatrix.apply(objOrigin, RT::FWDTFM);
-			localNormal = intPoint;
+			localNormal = intPoint - newObjOrigin;
 			localNormal.normalize();
 			// return the base color
 			localColor = m_baseColor;

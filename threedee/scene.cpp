@@ -1,9 +1,10 @@
 #include "scene.hpp"
+#include <iostream>
 
 // constructor
 RT::scene::scene() {
 	// configure the camera
-	m_camera.setPosition(vector<double>{std::vector<double>{0.0, -100.0, 0.0}}); // change the -100 back to -10 after testing
+	m_camera.setPosition(vector<double>{std::vector<double>{0.0, -10.0, 0.0}}); // change the -100 back to -10 after testing
 	m_camera.setLookAt(vector<double>{std::vector<double> {0.0, 0.0, 0.0}});
 	m_camera.setUp(vector<double>{std::vector<double>{0.0, 0.0, 1.0}});
 	m_camera.setHorzSize(0.25);
@@ -17,13 +18,13 @@ RT::scene::scene() {
 	RT::GTform testMatrix1, testMatrix2, testMatrix3;
 	testMatrix1.setTransform(vector<double>{std::vector<double>{-1.5, 0.0, 0.0}}, vector<double>{std::vector<double>{0.0, 0.0, 0.0}}, vector<double>{std::vector<double>{0.5, 0.5, 0.75}});
 	testMatrix2.setTransform(vector<double>{std::vector<double>{0.0, 0.0, 0.0}}, vector<double>{std::vector<double>{0.0, 0.0, 0.0}}, vector<double>{std::vector<double>{0.75, 0.5, 0.5}});
-	testMatrix2.setTransform(vector<double>{std::vector<double>{1.5, 0.0, 0.0}}, vector<double>{std::vector<double>{0.0, 0.0, 0.0}}, vector<double>{std::vector<double>{0.75, 0.75, 0.75}});
+	testMatrix3.setTransform(vector<double>{std::vector<double>{1.5, 0.0, 0.0}}, vector<double>{std::vector<double>{0.0, 0.0, 0.0}}, vector<double>{std::vector<double>{0.75, 0.75, 0.75}});
 	m_objectList.at(0)->setTransformMatrix(testMatrix1);
 	m_objectList.at(1)->setTransformMatrix(testMatrix2);
 	m_objectList.at(2)->setTransformMatrix(testMatrix3);
 	m_objectList.at(0)->m_baseColor = vector<double>{ std::vector<double>{64.0, 128.0, 200.0} }; // blue
-	m_objectList.at(1)->m_baseColor = vector<double>{ std::vector<double>{255.0, 128.0, 0.0} }; // orange
-	m_objectList.at(2)->m_baseColor = vector<double>{ std::vector<double>{255.0, 200.0, 0.0} }; // yellow
+	m_objectList.at(1)->m_baseColor = vector<double>{ std::vector<double>{255.0, 200.0, 0.0} }; // yellow
+	m_objectList.at(2)->m_baseColor = vector<double>{ std::vector<double>{255.0, 128.0, 0.0} }; // orange
 	// construct a test light
 	m_lightList.push_back(std::make_shared<RT::pointlight>(RT::pointlight()));
 	m_lightList.at(0) -> m_location = vector<double>{ std::vector<double> {5.0, -10.0, -5.0} };
@@ -45,6 +46,7 @@ bool RT::scene::render(image &outputImage) {
 	double minDist = 1e6;
 	double maxDist = 0.0;
 	for (int x = 0; x < xSize; x++) {
+		std::cout << x << std::endl; // for debugging, gives a time estimate on when the process will finish (number of pixels for width)
 		for (int y = 0; y < ySize; y++) {
 			// normalize the x and y coordinates
 			double normX = (static_cast<double>(x) * xFact) - 1.0;
@@ -74,12 +76,12 @@ bool RT::scene::render(image &outputImage) {
 					}
 					else {
 						// leave this pixel unchanged
-						outputImage.setPixel(x, y, 0.0, 0.0, 0.0);
+						// outputImage.setPixel(x, y, 0.0, 0.0, 0.0);
 					}
 				}
 				else {
 					// leave this pixel unchanged
-					outputImage.setPixel(x, y, 0.0, 0.0, 0.0);
+					// outputImage.setPixel(x, y, 0.0, 0.0, 0.0);
 				}
 			}
 		}
