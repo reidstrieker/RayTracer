@@ -26,12 +26,15 @@ private:
 	Uint32 convertColor(const double red, const double green, const double blue);
 	// SDL2 handling
 	void initTexture();
+	void computeMaxValues();
 	// arrays to store image data
 	std::vector<std::vector<double>> m_rChannel; // red channel data
 	std::vector<std::vector<double>> m_gChannel; // greeen channel data
 	std::vector<std::vector<double>> m_bChannel; // blue channel data
 	// store the dimensions of the image
 	int m_xSize, m_ySize;
+	// store the maximum values
+	double m_maxRed, m_maxGreen, m_maxBlue, m_overallMax;
 	// SDL2 stuff
 	SDL_Renderer* m_pRenderer;
 	SDL_Texture* m_pTexture;

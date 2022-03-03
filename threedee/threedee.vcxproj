@@ -160,6 +160,7 @@
     <ClInclude Include="lightbase.hpp" />
     <ClInclude Include="matrix.hpp" />
     <ClInclude Include="objectbase.hpp" />
+    <ClInclude Include="objplane.hpp" />
     <ClInclude Include="objsphere.hpp" />
     <ClInclude Include="pointlight.hpp" />
     <ClInclude Include="ray.hpp" />
@@ -174,6 +175,7 @@
     <ClCompile Include="lightbase.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="objectbase.cpp" />
+    <ClCompile Include="objplane.cpp" />
     <ClCompile Include="objsphere.cpp" />
     <ClCompile Include="pointlight.cpp" />
     <ClCompile Include="ray.cpp" />

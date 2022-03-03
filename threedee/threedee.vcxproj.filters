@@ -51,6 +51,9 @@
     <ClInclude Include="gtfm.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="objplane.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cApp.cpp">
@@ -84,6 +87,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="gtfm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="objplane.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
