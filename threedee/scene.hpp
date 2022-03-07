@@ -16,6 +16,8 @@ namespace RT {
 			scene();
 			// function to perform the rendering
 			bool render(image& outputImage);
+			// function to cast a ray into the scene
+			bool castRay(RT::ray& castRay, std::shared_ptr<RT::objectbase>& closestObject, vector<double>& closestIntPoint, vector<double>& closestLocalNormal, vector<double>& closestLocalColor);
 		private:
 			// the camera that we will use
 			RT::camera m_camera;

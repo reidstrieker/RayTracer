@@ -54,6 +54,12 @@
     <ClInclude Include="objplane.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="materialbase.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="simplematerial.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cApp.cpp">
@@ -90,6 +96,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="objplane.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="materialbase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="simplematerial.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
